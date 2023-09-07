@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataTables Example</title>
+    <!-- Include the DataTables CSS and JavaScript files -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+    <table id="data-table" class="display">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Created</th>
+                <th>Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready( () => {
+            const randomDataURL = 'https://randomapi.com/api/6de6abfedb24f889e0b5f675edc50deb?fmt=raw&sole';
+
+            // Initialize DataTable with the fetched data
+            $('#data-table').DataTable({
+                ajax: {
+                    url: randomDataURL,
+                    dataSrc: '', // Data is not wrapped in an object, so leave it empty
+                },
+                columns: [
+                    { data: 'first' },
+                    { data: 'last' },
+                    { data: 'email' },
+                    { data: 'address' },
+                    { data: 'created' },
+                    { data: 'balance' },
+                ],
+            });
+        });
+    </script>
+</body>
+</html>
